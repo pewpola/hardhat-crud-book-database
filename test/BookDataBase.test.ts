@@ -37,4 +37,14 @@ describe("BookDataBase", function () {
     const book = await bookDataBase.books(1);
     expect(book.title).to.equal("New Book 2");
   });
+
+  it("Should remove book", async function () {
+    const { bookDataBase, owner, otherAccount } = await loadFixture(deployFixture);
+    await bookDataBase.addBook({ title: "New Book", year: 2023 });
+    await bookDataBase.removeBook(1);
+
+    const count = await bookDataBase.count();
+    expect(count).to.equal(0);
+  });
+
 });
