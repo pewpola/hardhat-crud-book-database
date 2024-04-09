@@ -20,9 +20,15 @@ describe("Lock", function () {
     return { helloWorld, owner, otherAccount };
   }
 
-  it("Should Hello World", async function () {
+  it("Should get Hello World", async function () {
     const { helloWorld, owner, otherAccount } = await loadFixture(deployFixture);
     const message = await helloWorld.message();
     expect(message).to.equal("Hello, World!");
+  });
+
+  it("Should set Hello World", async function () {
+    const { helloWorld, owner, otherAccount } = await loadFixture(deployFixture);
+    await helloWorld.setMessage("New Message");
+    expect(await helloWorld.message()).to.equal("New Message");
   });
 });
