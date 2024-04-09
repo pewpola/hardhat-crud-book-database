@@ -23,6 +23,6 @@ describe("Lock", function () {
   it("Should Hello World", async function () {
     const { helloWorld, owner, otherAccount } = await loadFixture(deployFixture);
     const message = await helloWorld.message();
-    expect(message).to.equal("Hello World");
+    expect(message).to.equal("Hello, World!");
   });
 });
