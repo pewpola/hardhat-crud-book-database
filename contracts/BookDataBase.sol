@@ -14,6 +14,8 @@ contract BookDataBase {
 
     address private immutable owner;
 
+    uint256 public count;
+
     constructor() {
         owner = msg.sender;
     }
@@ -27,6 +29,7 @@ contract BookDataBase {
     function addBook(Book memory newBook) public {
         nextId++;
         books[nextId] = newBook;
+        count++;
     }
 
     function editBook(uint32 id, Book memory newBook) public {
@@ -42,7 +45,10 @@ contract BookDataBase {
     }
 
     function removeBook(uint32 id) public restricted {
-        delete books[id];
+        if (books[id].year > 0) {
+            delete books[id];
+            count--;
+        }
     }
 
     modifier restricted() {
