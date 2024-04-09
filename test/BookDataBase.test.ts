@@ -21,5 +21,11 @@ describe("BookDataBase", function () {
     const count = await bookDataBase.count();
     expect(count).to.equal(0);
   });
+
+  it("Should add book", async function () {
+    const { bookDataBase, owner, otherAccount } = await loadFixture(deployFixture);
+    await bookDataBase.addBook({ title: "New Book", year: 2023 });
+    const count = await bookDataBase.count();
+    expect(count).to.equal(1);
+  });
 });
-  
