@@ -47,4 +47,11 @@ describe("BookDataBase", function () {
     expect(count).to.equal(0);
   });
 
+  it("Should NOT remove book", async function () {
+    const { bookDataBase, owner, otherAccount } = await loadFixture(deployFixture);
+  
+    const instance = bookDataBase.connect(otherAccount);
+    await expect(instance.removeBook(1)).to.be.revertedWith("You don't have permission.");
+  });
+
 });
