@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm hardhat node",
     "test": "npx hardhat test",
-    "deploy": "npx hardhat ignition deploy ignition/modules/BookDataBase.ts --network local"
+    "deploy:dev": "npx hardhat ignition deploy ignition/modules/BookDataBase.ts --network local",
+    "deploy:prod": "npx hardhat ignition deploy ignition/modules/BookDataBase.ts --network sepolia"
   },
   "keywords": [],
   "author": "",
