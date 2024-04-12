@@ -20,6 +20,13 @@ const config: HardhatUserConfig = {
       accounts: {
         mnemonic: process.env.SECRET
       }
+    },
+    fantom: {
+      url: "https://rpc.ankr.com/fantom_testnet",
+      chainId: 4002,
+      accounts: {
+        mnemonic: process.env.SECRET
+      }
     }
   }
 };
