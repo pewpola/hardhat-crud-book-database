@@ -47,7 +47,10 @@ contract BookDataBase {
     function removeBook(uint32 id) public restricted {
         if (books[id].year > 0) {
             delete books[id];
-            count--;
+            // count--;
+            assembly {
+                sstore(count.slot, sub(sload(count.slot), 1))
+            }
         }
     }
 
